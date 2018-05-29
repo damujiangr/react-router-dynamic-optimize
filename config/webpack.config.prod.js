@@ -12,7 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
-
+// damujiangr: require
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -68,6 +68,7 @@ module.exports = {
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
+    // damujiangr: for deploy, use package.json->homepage
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
@@ -285,9 +286,10 @@ module.exports = {
       },
       sourceMap: shouldUseSourceMap,
     }),
+    // damujiangr: common chunk
     new webpack.optimize.CommonsChunkPlugin({
-      async: true,
-      minChunks: 2,
+      async: true,// dynamic import
+      minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
@@ -335,7 +337,7 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    // todo
+    // damujiangr: bundle analyer
     new BundleAnalyzerPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
@@ -347,6 +349,7 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
+  // damujiangr: externals
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'

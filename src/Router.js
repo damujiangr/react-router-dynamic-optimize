@@ -6,26 +6,28 @@ import Loadable from "react-loadable";
 
 const Loading = () => <div>Loading...</div>;
 
-
+// Load components with dynamic imports.
 const Home = Loadable({
     loader: () => import('./App'),
     loading: Loading
- });
+});
+
 const About = Loadable({
     loader: () => import('./components/About'),
     loading: Loading
- });
+});
 
- const Topics = Loadable({
+const Topics = Loadable({
     loader: () => import('./components/Topics'),
     loading: Loading
- });
+});
 
- const Third = Loadable({
+const Third = Loadable({
     loader: () => import('./components/Third'),
     loading: Loading
- });
+});
 
+// basic example of react router 4.x
 const BasicExample = () => (
     <Router>
         <div>
