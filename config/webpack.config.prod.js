@@ -288,7 +288,7 @@ module.exports = {
     }),
     // damujiangr: common chunk
     new webpack.optimize.CommonsChunkPlugin({
-      async: true,// dynamic import
+      children: true,// If `true` all children of the commons chunk are selected
       minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
     }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.

@@ -1,7 +1,7 @@
 # React Router 4.x Dynamic Import and Common Chunk Optimize
 > search `damujiangr:` for attention
 
-## 用到的插件
+## Usage
 1. import `antd` and dynamic import, plugins: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) / [babel-plugin-syntax-dynamic-import](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import)
 
 ```
@@ -29,11 +29,11 @@ const Home = Loadable({
  <Route exact path="/" component={Home} />
 ```
 
-1. common chunck
+1. common chunk
 ```
 // damujiangr: common chunk
 new webpack.optimize.CommonsChunkPlugin({
-    async: true,// dynamic import
+    children: true,// If `true` all children of the commons chunk are selected
     minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
 }),
 ```

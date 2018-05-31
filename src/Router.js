@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './index.css';
-import App from './App';
 import Loadable from "react-loadable";
 
 const Loading = () => <div>Loading...</div>;
@@ -17,13 +16,14 @@ const About = Loadable({
     loading: Loading
 });
 
-const Topics = Loadable({
-    loader: () => import('./components/Topics'),
-    loading: Loading
-});
 
 const Third = Loadable({
     loader: () => import('./components/Third'),
+    loading: Loading
+});
+
+const Topics = Loadable({
+    loader: () => import('./components/Topics'),
     loading: Loading
 });
 
@@ -50,9 +50,8 @@ const BasicExample = () => (
 
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/topics" component={Topics} />
             <Route path="/third" component={Third} />
-
+            <Route path="/topics" component={Topics} />
         </div>
     </Router>
 );

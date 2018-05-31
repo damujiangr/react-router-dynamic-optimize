@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import antd
-import { Button, Progress } from 'antd';
+import { Button } from 'antd';
 
 class App extends Component {
   render() {
@@ -16,9 +16,6 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Button type="primary">Primary</Button>
-        <div>
-            <Progress type="circle" percent={30} width={80} />
-        </div>
       </div>
     );
   }

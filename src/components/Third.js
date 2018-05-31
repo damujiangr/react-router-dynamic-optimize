@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon } from 'antd';
+import { Button, Icon, Progress } from 'antd';
 
 const Third = () => (
     <div>
@@ -7,6 +7,9 @@ const Third = () => (
         <Button type="primary">Primary</Button>
         <Icon type="plus-circle" />
         <Icon type="question-circle" />
+        <div>
+            <Progress type="circle" percent={30} width={80} />
+        </div>
     </div>
 );
 
