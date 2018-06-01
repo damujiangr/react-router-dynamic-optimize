@@ -33,12 +33,17 @@ const Home = Loadable({
 ```
 // damujiangr: common chunk
 new webpack.optimize.CommonsChunkPlugin({
+    name: "vendor",
+    minChunks: Infinity,// (with more entries, this ensures that no other module goes into the vendor chunk)
+}),
+new webpack.optimize.CommonsChunkPlugin({
     children: true,// If `true` all children of the commons chunk are selected
     minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
 }),
 ```
 
-1. externals
+1. externals, a substitution of vendor, not neccesary
+> priority if you have multi page in separate project for reuse
 
 ```
 // damujiangr: externals

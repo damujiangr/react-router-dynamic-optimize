@@ -58,7 +58,13 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: {
+    vendor: ['react', 'react-dom'],
+    main: [require.resolve('./polyfills'), paths.appIndexJs],
+    // about: paths.appAboutJs,
+    // third: paths.appThirdJs,
+    // topics: paths.appTopicsJs,
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -288,9 +294,21 @@ module.exports = {
     }),
     // damujiangr: common chunk
     new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks: Infinity,// (with more entries, this ensures that no other module goes into the vendor chunk)
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'main',
       children: true,// If `true` all children of the commons chunk are selected
       minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
     }),
+    // TODO test
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   chunks: ['about', 'third', 'topics'],
+    //   // children: true,// If `true` all children of the commons chunk are selected
+    //   minChunks: 2,// The number must be greater than or equal 2 and lower than or equal to the number of chunks.
+    //   async: true,
+    // }),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
       filename: cssFilename,
@@ -350,8 +368,8 @@ module.exports = {
     child_process: 'empty',
   },
   // damujiangr: externals
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
-  }
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM'
+  // }
 };
