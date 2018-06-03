@@ -1,7 +1,15 @@
 # React Router 4.x Dynamic Import and Common Chunk Optimize
-> search `damujiangr:` for attention
+> search `damujiangr:` for details
+
+related: [damujiangr/preact-router-dynamic-optimize](https://github.com/damujiangr/preact-router-dynamic-optimize)
 
 ## Usage
+1. command:
+```
+npm start       // start app
+npm run build   // build and analysis
+```
+
 1. import `antd` and dynamic import, plugins: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) / [babel-plugin-syntax-dynamic-import](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import)
 
 ```
