@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Icon, Progress } from 'antd';
 
+import './Third.css';
+
 const Third = () => (
     <div>
         <h2>Third</h2>
@@ -10,6 +12,7 @@ const Third = () => (
         <div>
             <Progress type="circle" percent={30} width={80} />
         </div>
+        <div className="third">Third Style</div>
     </div>
 );
 

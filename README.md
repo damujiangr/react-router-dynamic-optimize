@@ -5,14 +5,14 @@ related: [damujiangr/preact-router-dynamic-optimize](https://github.com/damujian
 
 ## Usage
 1. command:
-```
+```bash
 npm start       // start app
 npm run build   // build and analysis
 ```
 
 1. import `antd` and dynamic import, plugins: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) / [babel-plugin-syntax-dynamic-import](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import)
 
-```
+```javascript
 // .babelrc or babel-loader option
 "plugins": [
       [
@@ -28,7 +28,7 @@ npm run build   // build and analysis
 ```
 1. dynamic import for react router, [react-loadable](https://github.com/jamiebuilds/react-loadable)
 
-```
+```javascript
 const Home = Loadable({
     loader: () => import('./App'),
     loading: Loading
@@ -38,7 +38,7 @@ const Home = Loadable({
 ```
 
 1. common chunk
-```
+```javascript
 // damujiangr: common chunk
 new webpack.optimize.CommonsChunkPlugin({
     name: "vendor",
@@ -53,7 +53,7 @@ new webpack.optimize.CommonsChunkPlugin({
 1. externals, a substitution of vendor, not neccesary
 > priority if you have multi page in separate project for reuse
 
-```
+```javascript
 // damujiangr: externals
   externals: {
     'react': 'React',
@@ -62,7 +62,7 @@ new webpack.optimize.CommonsChunkPlugin({
 ```
 
 1. bundle analysis, plugins: [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-```
+```javascript
 // damujiangr: require
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
